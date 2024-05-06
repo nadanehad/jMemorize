@@ -457,8 +457,8 @@ public class EquivalenceClassSet<T> extends AbstractSet<T>
             if (itemLocationIdx >= 0) 
             {
                 // the item is a member of this class and will be removed 
-                isChanged = true; 
-                if (eqvPosition.matchingEqvClass == m_loopCurrentEqvClass) 
+                isChanged = true;
+                if (eqvPosition.matchingEqvClass.equals(m_loopCurrentEqvClass))
                 {
                     // we may have to replace the item loop iterator for this class, so get the position
                     replaceLoopItemIter = true;
