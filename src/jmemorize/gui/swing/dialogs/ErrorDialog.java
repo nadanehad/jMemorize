@@ -146,7 +146,7 @@ public class ErrorDialog extends JDialog
         
         JLabel textLabel = builder.addLabel("<html>"+m_message+"</html>", cc.xy(2,1));
         textLabel.setIcon(new ImageIcon(getClass().getResource(
-            "/resource/icons/warn.gif"))); //$NON-NLS-1$
+            "/resource/icons/warn.gif") )); //$NON-NLS-1$
         textLabel.setBorder(new EmptyBorder(20, 10, 20, 10));
         textLabel.setPreferredSize(new Dimension(500, 90));
         textLabel.setFont(textLabel.getFont().deriveFont(16.0f));
@@ -177,15 +177,16 @@ public class ErrorDialog extends JDialog
             }
         });
         
-        m_moreButton = new JButton("Show debug information");
+        m_moreButton =  new JButton("Show debug information");
         m_moreButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) 
             {
+
                 extendDialog();
             }
         });
-        
-        m_copyButton = new JButton("Copy to clipboard");
+
+         JButton copyButton = new JButton("Copy to clipboard");
         m_copyButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) 
             {
@@ -229,6 +230,6 @@ public class ErrorDialog extends JDialog
             {
                 // ignore
             }
-        });
+        } );
     }
 }
