@@ -97,4 +97,34 @@ public class SearchTool
     public static List<String> getSearchHistory() {
         return searchHistory;
     }
+
+    public static List<Card> searchWithinCategory(String text, int side, boolean matchCase, Category category) {
+        List<Card> foundCards = new LinkedList<Card>();
+        List<Card> cards = category.getCards(); // Assuming Category class has a method to get cards
+
+        for (Card card : cards) {
+            String frontSide = card.getFrontSide().getText().getUnformatted();
+            String flipSide = card.getBackSide().getText().getUnformatted();
+
+            if (!matchCase) {
+                text = text.toLowerCase();
+                frontSide = frontSide.toLowerCase();
+                flipSide = flipSide.toLowerCase();
+            }
+
+            if (side == FRONT_SIDE || side == BOTH_SIDES) {
+                if (frontSide.indexOf(text) > -1) {
+                    foundCards.add(card);
+                    continue;
+                }
+            }
+
+            if (side == FLIP_SIDE || side == BOTH_SIDES) {
+                if (flipSide.indexOf(text) > -1) {
+                    foundCards.add(card);
+                }
+            }
+        }
+        return foundCards;
+    }
 }
