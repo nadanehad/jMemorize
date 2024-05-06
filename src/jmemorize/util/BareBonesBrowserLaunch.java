@@ -46,7 +46,7 @@ public class BareBonesBrowserLaunch
                         .waitFor() == 0)
                         browser = browsers[count];
                 if (browser == null)
-                    throw new Exception("Could not find web browser");
+                    throw new IllegalArgumentException("Could not find web browser");
                 else
                     Runtime.getRuntime().exec(new String[] { browser, url });
             }
