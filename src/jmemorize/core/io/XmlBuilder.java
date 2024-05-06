@@ -190,7 +190,7 @@ public class XmlBuilder
      * 
      * Don't use this method directly. Use the {@link LessonProvider} instead.
      * 
-     * @param File xmlFile the file that containt the XML document which
+     * @param lesson xmlFile the file that containt the XML document which
      * represents the lesson.
      */
     public static void loadFromXMLFile(File xmlFile, Lesson lesson) 
@@ -225,6 +225,7 @@ public class XmlBuilder
         try
         {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            factory.setFeature("http://apache.org/xml/features/disallow-doctype-decl", true); // Disable DOCTYPE declaration
             Document doc = factory.newDocumentBuilder().parse(in);
     
             // there must be a root category
