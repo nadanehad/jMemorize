@@ -164,11 +164,9 @@ public class DeckChartPanel extends JPanel implements CategoryObserver
                 Object[] pair = (Object[]) it.next();
                 double thisValue = ((Double)pair[1]).doubleValue(); 
                 double delta = thisValue - lastValue;
-                
-                if( pair[0] != null) 
-                {
-                    if (delta == 0.0) 
-                        it.remove();
+
+                if (pair[0] != null && delta == 0.0) {
+                    it.remove();
                 }
                 
                 lastValue = thisValue;
