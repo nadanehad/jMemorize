@@ -262,7 +262,6 @@ public class CardSidePanel extends JPanel
     private List<CardImageObserver> m_imageObservers = new LinkedList<CardImageObserver>();
     private CardFont                m_cardFont;
 
-    private JButton                 m_prevImageButton;
     private JButton                 m_nextImageButton;
 
     private JButton                 m_textModeButton;
@@ -601,7 +600,7 @@ public class CardSidePanel extends JPanel
         m_imageLabel.setHorizontalAlignment(StyleConstants.ALIGN_LEFT);
         m_imageBar.add(m_imageLabel);
         
-        m_prevImageButton = new JButton(loadIcon("arrow_left.png")); //$NON-NLS-1$
+        JButton m_prevImageButton = new JButton(loadIcon("arrow_left.png")); //$NON-NLS-1$
         m_prevImageButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e)
             {
