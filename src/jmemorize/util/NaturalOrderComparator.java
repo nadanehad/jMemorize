@@ -74,8 +74,7 @@ public class NaturalOrderComparator implements Comparator
         }
     }
 
-    public int compare(Object o1, Object o2)
-    {
+    public int compare(Object o1, Object o2) {
         String a = o1.toString();
         String b = o2.toString();
 
@@ -84,67 +83,49 @@ public class NaturalOrderComparator implements Comparator
         char ca, cb;
         int result;
 
-        while (true)
-        {
-            // only count the number of zeroes leading the last number compared
+        while (true) {
+            // Only count the number of zeroes leading the last number compared
             nza = nzb = 0;
 
             ca = charAt(a, ia);
             cb = charAt(b, ib);
 
-            // skip over leading spaces or zeros
-            while (Character.isSpaceChar(ca) || ca == '0')
-            {
-                if (ca == '0')
-                {
+            // Skip over leading spaces or zeros
+            while ((Character.isSpaceChar(ca) || ca == '0') && (Character.isSpaceChar(cb) || cb == '0')) {
+                if (ca == '0') {
                     nza++;
-                }
-                else
-                {
-                    // only count consecutive zeroes
+                } else {
+                    // Only count consecutive zeroes
                     nza = 0;
                 }
 
-                ca = charAt(a, ++ia);
-            }
-
-            while (Character.isSpaceChar(cb) || cb == '0')
-            {
-                if (cb == '0')
-                {
+                if (cb == '0') {
                     nzb++;
-                }
-                else
-                {
-                    // only count consecutive zeroes
+                } else {
+                    // Only count consecutive zeroes
                     nzb = 0;
                 }
 
+                ca = charAt(a, ++ia);
                 cb = charAt(b, ++ib);
             }
 
-            // process run of digits
-            if (Character.isDigit(ca) && Character.isDigit(cb))
-            {
-                if ((result = compareRight(a.substring(ia), b.substring(ib))) != 0)
-                {
+            // Process run of digits
+            if (Character.isDigit(ca) && Character.isDigit(cb)) {
+                if ((result = compareRight(a.substring(ia), b.substring(ib))) != 0) {
                     return result;
                 }
             }
 
-            if (ca == 0 && cb == 0)
-            {
+            if (ca == 0 && cb == 0) {
                 // The strings compare the same. Perhaps the caller
                 // will want to call strcmp to break the tie.
                 return nza - nzb;
             }
 
-            if (ca < cb)
-            {
+            if (ca < cb) {
                 return -1;
-            }
-            else if (ca > cb)
-            {
+            } else if (ca > cb) {
                 return +1;
             }
 
@@ -152,6 +133,7 @@ public class NaturalOrderComparator implements Comparator
             ++ib;
         }
     }
+
 
     static char charAt(String s, int i)
     {
