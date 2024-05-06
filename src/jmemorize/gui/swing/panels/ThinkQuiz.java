@@ -33,27 +33,21 @@ import jmemorize.gui.swing.Quiz;
 public class ThinkQuiz implements Quiz
 {
     private CardSidePanel     m_answerPanel = new CardSidePanel();
-    
-    private CardSide          m_answerCardSide;
 
-    public ThinkQuiz()
-    {
+
+    public ThinkQuiz() {
         m_answerPanel.setEditable(false);
     }
 
-    /* (non-Javadoc)
-     * @see jmemorize.gui.swing.Quiz
-     */
-    public void showQuestion(CardSide answerCardSide)
-    {
-        m_answerCardSide = answerCardSide;
-        
+    public void showQuestion(CardSide answerCardSide) {
+        CardSide m_answerCardSide = answerCardSide; // Declaring m_answerCardSide as a local variable
         m_answerPanel.setText(m_answerCardSide.getText());
-        
+
         ImageRepository repo = ImageRepository.getInstance();
         List<ImageIcon> images = repo.toImageIcons(m_answerCardSide.getImages());
         m_answerPanel.setImages(images);
     }
+
 
     /* (non-Javadoc)
      * @see jmemorize.gui.swing.Quiz

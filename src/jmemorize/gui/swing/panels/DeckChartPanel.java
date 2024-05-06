@@ -113,9 +113,9 @@ public class DeckChartPanel extends JPanel implements CategoryObserver
             m_boldFont      = getBaseItemLabelFont().deriveFont(Font.BOLD);
         }
         
-        public void drawItem(Graphics2D g, CategoryItemRendererState state, 
-            Rectangle2D dataArea, CategoryPlot plot, CategoryAxis domainAxis, 
-            ValueAxis rangeAxis, CategoryDataset data, int row, int column, int pass)
+        public void drawItem(Graphics2D g, CategoryItemRendererState state,
+                             Rectangle2D dataArea, CategoryPlot plot, AxisConfiguration axisConfig,
+                             CategoryDataset data, int row, int column, int pass)
         {
             if (column - 1 == m_deck && m_category.getCards(m_deck).size() > 0)
             {
@@ -131,8 +131,8 @@ public class DeckChartPanel extends JPanel implements CategoryObserver
             }
             
 //            domainAxis.setCategoryMargin(0.2 + (0.011 * getMinNumDecks()));
-            
-            super.drawItem(g, state, dataArea, plot, domainAxis, rangeAxis, 
+
+            super.drawItem(g, state, dataArea, plot, axisConfig.getDomainAxis(), axisConfig.getRangeAxis(),
                 data, row, column, pass);
         }
         
@@ -164,11 +164,9 @@ public class DeckChartPanel extends JPanel implements CategoryObserver
                 Object[] pair = (Object[]) it.next();
                 double thisValue = ((Double)pair[1]).doubleValue(); 
                 double delta = thisValue - lastValue;
-                
-                if( pair[0] != null) 
-                {
-                    if (delta == 0.0) 
-                        it.remove();
+
+                if (pair[0] != null && delta == 0.0) {
+                    it.remove();
                 }
                 
                 lastValue = thisValue;
