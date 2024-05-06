@@ -46,7 +46,7 @@ public class SearchTool
                 flipSide  = flipSide.toLowerCase();
             }
             
-            if (side == FRONT_SIDE || side == BOTH_SIDES)
+            if ((side == FRONT_SIDE || side == BOTH_SIDES) && frontSide.indexOf(text) > -1)
             {
                 if (frontSide.indexOf(text) > -1)
                 {
@@ -55,7 +55,7 @@ public class SearchTool
                 }
             }
             
-            if (side == FLIP_SIDE || side == BOTH_SIDES)
+            if ((side == FLIP_SIDE || side == BOTH_SIDES) && flipSide.indexOf(text) > -1)
             {
                 if (flipSide.indexOf(text) > -1)
                 {
