@@ -83,7 +83,7 @@ public class ExceptionLoggedCheck extends Check
         } else if (ast.getType() == TokenTypes.LITERAL_ASSERT &&
             catchDepth == 1) {
             DetailAST childAst = ast.findFirstToken(TokenTypes.EXPR);
-            if (childAst != null || childAst.getNumberOfChildren() == 1) {
+            if (childAst != null && childAst.getNumberOfChildren() == 1) {
                 DetailAST grandchildAst = childAst.findFirstToken(TokenTypes.LITERAL_FALSE);
                 if (grandchildAst != null) {
                     hasAssert = true;                            
