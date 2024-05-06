@@ -181,11 +181,12 @@ public class ErrorDialog extends JDialog
         m_moreButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) 
             {
+
                 extendDialog();
             }
         });
 
-        JButton copyButton = new JButton("Copy to clipboard");
+         JButton copyButton = new JButton("Copy to clipboard");
         m_copyButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) 
             {
