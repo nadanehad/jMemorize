@@ -114,22 +114,15 @@ public class EquivalenceClassSet<T> extends AbstractSet<T>
             localEqvClassIter = m_equivalenceClasses.listIterator(); // index used by the loop iterator
             localItemIter = null; // null means before the next class
         }
-        
-        public boolean hasNext() 
-        {
-            if (m_changeID != localChangeID) 
-            {
+
+        public boolean hasNext() {
+            if (m_changeID != localChangeID) {
                 throw new ConcurrentModificationException();
             }
-            
-            if (localEqvClassIter.hasNext() || 
-                    (localItemIter != null && localItemIter.hasNext())) 
-            {
-                return true;
-            }
-            
-            return false;
+
+            return localEqvClassIter.hasNext() || (localItemIter != null && localItemIter.hasNext());
         }
+
 
         public T next() 
         {
