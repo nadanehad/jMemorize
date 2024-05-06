@@ -184,8 +184,8 @@ public class ErrorDialog extends JDialog
                 extendDialog();
             }
         });
-        
-        m_copyButton = new JButton("Copy to clipboard");
+
+        JButton copyButton = new JButton("Copy to clipboard");
         m_copyButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) 
             {
