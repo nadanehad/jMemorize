@@ -437,11 +437,9 @@ public class EditCardFrame extends EscapableFrame implements CategoryObserver, S
         
         if (!ImageRepository.equals(m_cardPanel.getFrontImages(), frontSide.getImages()))
             return true;
-        
-        if (!ImageRepository.equals(m_cardPanel.getBackImages(), backSide.getImages()))
-            return true;
 
-        return false;
+        return ImageRepository.equals(m_cardPanel.getBackImages(), backSide.getImages());
+
     }
     
     private void updatePanel()
