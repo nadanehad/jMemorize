@@ -323,7 +323,7 @@ public class GeneralTransferHandler extends TransferHandler
                 return false;
             }
 
-            Category targetCategory = null;
+            Category targetCategory= null;
             if (t.isDataFlavorSupported(CARDS_FLAVOR))
             {
                 List<Card> cards = (List<Card>)t.getTransferData(CARDS_FLAVOR);
