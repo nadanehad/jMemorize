@@ -550,7 +550,7 @@ public class CategoryTree extends JTree implements CategoryObserver, SelectionPr
         {
             DefaultMutableTreeNode node = (DefaultMutableTreeNode)enumer.nextElement();
             
-            if (node.getUserObject() == userValue)
+            if (node.getUserObject().equals(userValue))
             {
                 return node;
             }
