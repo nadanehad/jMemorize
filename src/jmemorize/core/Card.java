@@ -244,10 +244,13 @@ public class Card implements Events, Cloneable
     /**
      * @param date can be <code>null</code>.
      */
-    public void setDateExpired(Date date) // CHECK should this throw a event?
-    {
+    public void setDateExpired(Date date) throws IllegalArgumentException {
+        if (date.before(m_dateCreated)) {
+            throw new IllegalArgumentException("Expiration date cannot be before the creation date of the card.");
+        }
         m_dateExpired = cloneDate(date);
     }
+
 
     /**
      * @return the creation date. Is never <code>null</code>.
