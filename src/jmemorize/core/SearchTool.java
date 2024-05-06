@@ -18,9 +18,7 @@
  */
 package jmemorize.core;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author djemili
@@ -127,4 +125,17 @@ public class SearchTool
         }
         return foundCards;
     }
+
+    public static void sortByRelevance(List<Card> foundCards) {
+        // Sort by relevance criteria
+        Collections.sort(foundCards, new Comparator<Card>() {
+            @Override
+            public int compare(Card card1, Card card2) {
+                // Implement comparison logic based on relevance
+                // Return -1 if card1 is more relevant, 1 if card2 is more relevant, 0 if equal
+                return 0; // Placeholder, implement actual logic
+            }
+        });
+    }
+
 }
