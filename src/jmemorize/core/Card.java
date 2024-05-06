@@ -20,6 +20,7 @@ package jmemorize.core;
 
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import jmemorize.core.CardSide.CardSideObserver;
 
@@ -196,7 +197,17 @@ public class Card implements Events, Cloneable
         setLearnedAmount(true, 0);
         setLearnedAmount(false, 0);
     }
-
+    // New method to calculate the remaining days until card expiration
+    public long getDaysUntilExpiration()
+    {
+        if (m_dateExpired != null)
+        {
+            long diff = m_dateExpired.getTime() - Main.getNow().getTime();
+            return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        }
+        return -1; // Return -1 if the card does not have an expiration date set
+    }
+    
     public CardSide getFrontSide()
     {
         return m_frontSide;
