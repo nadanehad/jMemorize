@@ -263,27 +263,21 @@ public class GeneralTransferHandler extends TransferHandler
     {
         try
         {
-            Category targetCategory;
-            if (comp instanceof CategoryTree)
-            {
-                CategoryTree tree = (CategoryTree)comp;
-                targetCategory = tree.getSelectedCategory();
-            }
-            else if (comp instanceof CardTable)
-            {
-                CardTable table = (CardTable)comp;
-                targetCategory = table.getView().getCategory();
+            if (comp instanceof CategoryTree || comp instanceof CardTable) {
+                Category targetCategory = comp instanceof CategoryTree ?
+                        ((CategoryTree) comp).getSelectedCategory() :
+                        ((CardTable) comp).getView().getCategory();
             }
             else if (comp instanceof JTextPane)
             {
                 JTextPane textPane = (JTextPane)comp;
-                
+
                 if (t.isDataFlavorSupported(FORMATTED_TEXT_FLAVOR))
                 {
                     int start = textPane.getSelectionStart();
                     FormattedTextSection fText = (FormattedTextSection)t.getTransferData(
                         FORMATTED_TEXT_FLAVOR);
-                    
+
                     fText.getText().insertIntoDocument(textPane.getStyledDocument(), start);
                 }
                 else if (t.isDataFlavorSupported(DataFlavor.imageFlavor))
@@ -292,23 +286,23 @@ public class GeneralTransferHandler extends TransferHandler
                     {
                         String link = (String)t.getTransferData(DataFlavor.stringFlavor);
                         link = link.substring(0, link.indexOf('\n'));
-                        
+
                         String lower = link.toLowerCase();
                         if (lower.startsWith("http://"))
                         {
-                            if (lower.endsWith(".jpg") || 
+                            if (lower.endsWith(".jpg") ||
                                 lower.endsWith(".gif") ||
-                                lower.endsWith(".png") || 
-                                lower.endsWith(".jpeg") || 
+                                lower.endsWith(".png") ||
+                                lower.endsWith(".jpeg") ||
                                 lower.endsWith(".bmp"))
                             {
                                 URL url = new URL(link);
                                 ImageIcon icon = new ImageIcon(url);
                                 icon.setDescription(link);
-                                
+
                                 m_cardSidePanel.addImage(icon);
                                 m_cardSidePanel.getTextPane().requestFocus();
-                                
+
                                 return true;
                             }
                         }
@@ -318,17 +312,18 @@ public class GeneralTransferHandler extends TransferHandler
                 {
                     int start = textPane.getSelectionStart();
                     String text = (String)t.getTransferData(DataFlavor.stringFlavor);
-                    
+
                     textPane.getDocument().insertString(start, text, null);
                 }
-                
+
                 return true;
             }
             else
             {
                 return false;
-            }        
-        
+            }
+
+            Category targetCategory= null;
             if (t.isDataFlavorSupported(CARDS_FLAVOR))
             {
                 List<Card> cards = (List<Card>)t.getTransferData(CARDS_FLAVOR);
