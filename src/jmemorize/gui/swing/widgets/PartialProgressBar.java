@@ -22,6 +22,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Insets;
+import java.security.SecureRandom;
 import java.util.Random;
 
 import javax.swing.JFrame;
@@ -99,12 +100,11 @@ public class PartialProgressBar extends JProgressBar
     {
         PartialProgressBar bar = new PartialProgressBar();
         bar.setString("Hello World");
-        
-        Random rand = new Random();
+
+        SecureRandom secureRand = new SecureRandom();
         float[] vals = new float[100];
-        for (int i = 0; i < vals.length; i++)
-        {
-            vals[i] = rand.nextFloat();
+        for (int i = 0; i < vals.length; i++) {
+            vals[i] = secureRand.nextFloat();
         }
         bar.setValues(vals);
         bar.setForeground(Color.BLUE);
