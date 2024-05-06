@@ -20,6 +20,7 @@ package jmemorize.core;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 import jmemorize.core.CardSide.CardSideObserver;
 
@@ -251,10 +252,7 @@ public class Card implements Events, Cloneable
 
     public void setDateCreated(Date date)
     {
-        if (date == null) 
-            throw new NullPointerException();
-        
-        m_dateCreated = cloneDate(date);
+        m_dateCreated = Objects.requireNonNull(date, "Date cannot be null");
     }
     
     /**
