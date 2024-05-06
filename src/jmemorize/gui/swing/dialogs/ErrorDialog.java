@@ -153,7 +153,7 @@ public class ErrorDialog extends JDialog
 
         m_debugText = getDebugText(m_exception);
         
-        m_stacktraceArea = new JTextArea(m_debugText);
+        JTextArea m_stacktraceArea = new JTextArea(m_debugText);
         m_stacktraceArea.setEditable(false);
         m_scrollPane = new JScrollPane(m_stacktraceArea);
         m_scrollPane.setPreferredSize(new Dimension(500, 300));
