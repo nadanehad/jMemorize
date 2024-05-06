@@ -25,6 +25,7 @@ import javax.swing.JMenuItem;
 
 import jmemorize.core.Main;
 import jmemorize.gui.Localization;
+import jmemorize.gui.SettingsManager;
 import jmemorize.gui.swing.actions.AboutAction;
 import jmemorize.gui.swing.actions.LearnAction;
 import jmemorize.gui.swing.actions.OpenURLAction;
@@ -199,4 +200,21 @@ public class MainMenu extends JMenuBar implements RecentItemsObserver
         m_fileMenu.addSeparator();
         m_fileMenu.add(new JMenuItem(new ExitAction()));
     }
+
+    /*dark mode*/
+    boolean darkModeEnabled = SettingsManager.isDarkModeEnabled();
+    applyDarkMode(darkModeEnabled);
+    private static void applyDarkMode(boolean enabled) {
+        if (enabled) {
+
+            System.out.println("Dark mode applied");
+            enabled = true;
+
+        } else {
+
+            System.out.println("Light mode applied");
+            enabled = false;
+        }
+    }
+
 }
