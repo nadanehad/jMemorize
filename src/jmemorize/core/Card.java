@@ -207,6 +207,7 @@ public class Card implements Events, Cloneable
         }
         return -1; // Return -1 if the card does not have an expiration date set
     }
+    
     public CardSide getFrontSide()
     {
         return m_frontSide;
