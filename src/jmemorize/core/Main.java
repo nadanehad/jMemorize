@@ -27,11 +27,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.URL;
 import java.nio.channels.FileChannel;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Observable;
-import java.util.Properties;
+import java.util.*;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
 import java.util.logging.Level;
@@ -445,7 +441,7 @@ public class Main extends Observable implements LearnSessionProvider,
     // we have more information about the exception there.
     public static void logThrowable(String msg, Throwable t) 
     {
-        if (t != null && m_lastLoggedThrowable != t) 
+        if (t != null && !Objects.equals(m_lastLoggedThrowable, t))
         {
             m_lastLoggedThrowable = t;
             logger.severe(msg);
