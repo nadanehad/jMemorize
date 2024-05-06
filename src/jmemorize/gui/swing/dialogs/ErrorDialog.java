@@ -169,7 +169,7 @@ public class ErrorDialog extends JDialog
     private JPanel buildButtonBar()
     {
         // buttons
-        m_okayButton = new JButton(Localization.get(LC.OKAY));
+        JButton okayButton = new JButton(Localization.get(LC.OKAY));
         m_okayButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) 
             {
