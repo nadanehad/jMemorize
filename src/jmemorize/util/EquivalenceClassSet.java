@@ -430,12 +430,7 @@ public class EquivalenceClassSet<T> extends AbstractSet<T>
     public boolean contains(Object arg0) 
     {
         EqvPosition eqvPosition = findEqvClass(arg0);
-        if (eqvPosition.matchingEqvClass != null &&
-                eqvPosition.matchingEqvClass.contains(arg0)) 
-        {
-            return true; // already a member, do nothing
-        }   
-        return false;
+        return eqvPosition.matchingEqvClass != null && eqvPosition.matchingEqvClass.contains(arg0);
     }
 
     /* (non-Javadoc)
