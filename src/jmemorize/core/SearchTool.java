@@ -30,7 +30,9 @@ public class SearchTool
     public final static int FRONT_SIDE = 0;
     public final static int FLIP_SIDE  = 1;
     public final static int BOTH_SIDES = 2;
-    
+    private static List<String> searchHistory = new ArrayList<>();
+
+
     public static List<Card> search(String text, int side, boolean matchCase, List<Card> cards)
     {
         List<Card> foundCards = new LinkedList<Card>();
@@ -87,4 +89,12 @@ public class SearchTool
         return positions;
     }
 
+
+    public static void addToSearchHistory(String query) {
+        searchHistory.add(query);
+    }
+
+    public static List<String> getSearchHistory() {
+        return searchHistory;
+    }
 }
