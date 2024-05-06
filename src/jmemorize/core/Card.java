@@ -444,9 +444,12 @@ public class Card implements Events, Cloneable
     /**
      * @see java.lang.Object#toString()
      */
-    public String toString()
-    {
-        return "("+m_frontSide+"/"+m_backSide+")";
+    public String toString() {
+        if (m_dateExpired != null) {
+            return "(" + m_frontSide + "/" + m_backSide + " - Expires: " + m_dateExpired + ")";
+        } else {
+            return "(" + m_frontSide + "/" + m_backSide + ")";
+        }
     }
     
     private void attachCardSideObservers()
