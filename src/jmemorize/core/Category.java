@@ -58,6 +58,8 @@ public class Category implements Events
 
     private Category               m_parent;
     private List<Category>         m_childCategories = new LinkedList<Category>();
+
+
     
     /**
      * Creates a new Category.
