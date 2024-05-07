@@ -321,7 +321,6 @@ public class LearnHistory
     // TODO enforce that m_summaries is always sorted in descending date order
     private List<SessionSummary>    m_summaries = new ArrayList<SessionSummary>();
     
-    private File                    m_file;
     private boolean                 m_isLoaded; // false, if created from scratch
     
     public LearnHistory()
@@ -329,21 +328,17 @@ public class LearnHistory
         this(null);
     }
     
-    public LearnHistory(File file)
-    {
-        try
-        {
-            m_file = file;
-            
-            if (m_file != null)
-                load(m_file);
-        } 
-        catch (Exception e)
-        {
-            
-            Main.logThrowable("Could not load learn history.", e);
-        } 
+    public LearnHistory(File file) {
+    try {
+        File localFile = file; 
+        
+        if (localFile != null)
+            load(localFile);
+    } catch (Exception e) {
+        Main.logThrowable("Could not load learn history.", e);
     }
+}
+
     
     public void addSummary(Date start, Date end, int passed, int failed, 
         int skipped, int relearned)
