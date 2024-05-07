@@ -60,6 +60,8 @@ public class Category implements Events
     private Map<String, String> customAttributes = new HashMap<>();
 
     private List<Category>         m_childCategories = new LinkedList<Category>();
+
+
     
     /**
      * Creates a new Category.
