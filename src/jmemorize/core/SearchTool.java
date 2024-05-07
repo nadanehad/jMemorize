@@ -110,17 +110,13 @@ public class SearchTool
                 flipSide = flipSide.toLowerCase();
             }
 
-            if (side == FRONT_SIDE || side == BOTH_SIDES) {
-                if (frontSide.indexOf(text) > -1) {
-                    foundCards.add(card);
-                    continue;
-                }
+            if ((side == FRONT_SIDE || side == BOTH_SIDES) && frontSide.indexOf(text) > -1) {
+                            foundCards.add(card);
             }
 
-            if (side == FLIP_SIDE || side == BOTH_SIDES) {
-                if (flipSide.indexOf(text) > -1) {
-                    foundCards.add(card);
-                }
+            if (side == FLIP_SIDE || side == BOTH_SIDES && flipSide.indexOf(text) > -1) {
+                                    foundCards.add(card);
+
             }
         }
         return foundCards;
