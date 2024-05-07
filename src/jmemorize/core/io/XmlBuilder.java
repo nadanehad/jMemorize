@@ -571,44 +571,43 @@ public class XmlBuilder
         return card;
     }
     
-    private static List<String> loadImages(Node cardTag, int side)
-    {
-        int sideIndex = 0;
-        NodeList cardChildren = cardTag.getChildNodes();
-        for (int i = 0; i < cardChildren.getLength(); i++)
-        {
-            Node sideTag = cardChildren.item(i);
-            
-            if (!sideTag.getNodeName().equalsIgnoreCase(SIDE))
-                continue;
-            
-            if (side != sideIndex)
-            {
-                sideIndex++;
-                continue;
-            }
-            
-            NodeList childTags = sideTag.getChildNodes();
-            List<String> imgIDs =  new ArrayList<String>(childTags.getLength());
-            for (int j = 0; j < childTags.getLength(); j++)
-            {
-                Node childTag = childTags.item(j);
-                
-                if (!childTag.getNodeName().equalsIgnoreCase(IMG))
-                    continue;
-                
-                Node item = childTag.getAttributes().getNamedItem(IMG_ID);
-                if (item == null)
-                    continue;
-                
-                imgIDs.add(item.getNodeValue());
-            }    
-            
-            return imgIDs;
+    private static List<String> loadImages(Node cardTag, int side) {
+    int sideIndex = 0;
+    NodeList cardChildren = cardTag.getChildNodes();
+    List<String> imgIDs = new ArrayList<>();
+
+    for (int i = 0; i < cardChildren.getLength(); i++) {
+        Node sideTag = cardChildren.item(i);
+        
+        if (!sideTag.getNodeName().equalsIgnoreCase(SIDE))
+            continue;
+        
+        if (side != sideIndex) {
+            sideIndex++;
+            continue;
         }
         
-        return new ArrayList<String>();
+        NodeList childTags = sideTag.getChildNodes();
+        
+        for (int j = 0; j < childTags.getLength(); j++) {
+            Node childTag = childTags.item(j);
+            
+            if (!childTag.getNodeName().equalsIgnoreCase(IMG))
+                continue;
+            
+            Node item = childTag.getAttributes().getNamedItem(IMG_ID);
+            
+            if (item == null)
+                continue;
+            
+            imgIDs.add(item.getNodeValue());
+        }
+        
+        sideIndex++;
     }
+
+    return imgIDs;
+}
     
     private static void loadImageRepositoryFromDisk(File dir)
     {
