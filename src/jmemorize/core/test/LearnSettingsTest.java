@@ -10,19 +10,17 @@ import junit.framework.TestCase;
 public class LearnSettingsTest extends TestCase
 {
     private LearnSettings m_settings;
-    private Calendar      m_testCalendar;
     private Date          m_testDate;
 
     @Override
-    protected void setUp() throws Exception
-    {
-        m_settings = new LearnSettings();
+    protected void setUp() throws Exception {
+    Calendar testCalendar = Calendar.getInstance();
+    testCalendar.set(2007, 5, 4, 13, 20);
 
-        m_testCalendar = Calendar.getInstance();
-        m_testCalendar.set(2007, 5, 4, 13, 20);
+    m_settings = new LearnSettings();
+    m_testDate = testCalendar.getTime();
+}
 
-        m_testDate = m_testCalendar.getTime();
-    }
 
     public void testGetExpirationForConst() throws Exception
     {
