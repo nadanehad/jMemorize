@@ -11,3 +11,7 @@ U
 %src/jmemorize/core/io/CsvBuilder.java,6\5\65822d371ef59c2644ce2e104e93a794749b5bc1
 Z
 *src/jmemorize/core/io/ImportAndExport.java,c\8\c81a1674fb38d5ca321f2e5e6b3712343fda23f8
+Z
+*src/jmemorize/core/io/SettingsManager.java,1\1\113932d1cec39d80e3dce3610fb1f8dab0283232
+S
+#src/jmemorize/core/io/Settings.java,3\8\3897e96e649ee1983b6e18fd742b209940c57a02
