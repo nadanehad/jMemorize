@@ -489,8 +489,7 @@ public class EquivalenceClassSet<T> extends AbstractSet<T>
                     else 
                     {                        
                         m_loopEqvClassIter = m_equivalenceClasses.listIterator(loopNextClassIdx);
-                        if (eqvPosition.matchingEqvClass == m_loopCurrentEqvClass) 
-                        {
+                     if (eqvPosition.matchingEqvClass.equals(m_loopCurrentEqvClass))                        {
                             m_loopCurrentEqvClass = null;
                             m_loopItemIter = m_emptyList.listIterator(); 
                         }                        
