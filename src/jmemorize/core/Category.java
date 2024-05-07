@@ -68,6 +68,28 @@ public class Category implements Events
     {
         m_name   = name;
     }
+     public void sortCards(String criteria, boolean ascending) {
+        Comparator<Card> comparator = null;
+        
+        switch (criteria) {
+            case "date added":
+                comparator = Comparator.comparing(Card::getDateAdded);
+                break;
+            case "last reviewed":
+                comparator = Comparator.comparing(Card::getLastReviewed);
+                break;
+            default:
+                throw new IllegalArgumentException("Unsupported sorting criteria: " + criteria);
+        }
+        
+        if (!ascending) {
+            comparator = comparator.reversed();
+        }
+        
+        for (List<Card> deck : m_decks) {
+            Collections.sort(deck, comparator);
+        }
+    }
     
     /*
      * Card related methods.
