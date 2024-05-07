@@ -240,20 +240,15 @@ public class GeneralTransferHandler extends TransferHandler
             }
         }
         
-        if (comp instanceof JTextPane)
-        {
-            for (int i = 0; i < transferFlavors.length; i++)
-            {
-                if (transferFlavors[i] == FORMATTED_TEXT_FLAVOR || 
-                    transferFlavors[i] == DataFlavor.stringFlavor)
-                {
-                    return true;
-                }
-            }
+        if (comp instanceof JTextPane) {
+    for (int i = 0; i < transferFlavors.length; i++) {
+        if (transferFlavors[i].equals(FORMATTED_TEXT_FLAVOR) || 
+            transferFlavors[i].equals(DataFlavor.stringFlavor)) {
+            return true;
         }
-        
-        return false;
     }
+}
+return false;
     
     /*
      * @see javax.swing.TransferHandler
