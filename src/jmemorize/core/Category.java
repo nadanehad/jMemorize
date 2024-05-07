@@ -57,6 +57,8 @@ public class Category implements Events
     private List<List<Card>>       m_decks           = new ArrayList<List<Card>>(); // list of card lists
 
     private Category               m_parent;
+    private Map<String, String> customAttributes = new HashMap<>();
+
     private List<Category>         m_childCategories = new LinkedList<Category>();
     
     /**
@@ -67,6 +69,8 @@ public class Category implements Events
     public Category(String name)
     {
         m_name   = name;
+        customAttributes = new HashMap<>();
+
     }
      public void sortCards(String criteria, boolean ascending) {
         Comparator<Card> comparator = null;
@@ -104,6 +108,12 @@ public class Category implements Events
     public void addCard(Card card)
     {
         addCard(card, 0);
+    }
+    public void addCustomAttribute(String attributeName, String attributeValue) {
+        customAttributes.put(attributeName, attributeValue);
+    }
+    public void removeCustomAttribute(String attributeName) {
+        customAttributes.remove(attributeName);
     }
     
     /**
