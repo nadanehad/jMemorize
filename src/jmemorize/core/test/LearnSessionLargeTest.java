@@ -40,7 +40,6 @@ public class LearnSessionLargeTest extends TestCase
     private int                      m_unlearnedCount;
     private int                      m_learnedCount;
     private int                      m_expiredCount;
-    private int                      m_selectedCount;
     
     private final static Date        LAST_TEST = createDate(-1);
     private final static Date        EXPIRATION = createDate(-5);
@@ -58,7 +57,7 @@ public class LearnSessionLargeTest extends TestCase
         m_unlearnedCount = 0;
         m_learnedCount = 0;
         m_expiredCount = 0;
-        m_selectedCount = 0;
+        int m_selectedCount = 0;
     }
     
     public void testSessionWithLearned()
